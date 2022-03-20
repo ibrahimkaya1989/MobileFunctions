@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <!--
+    <listeners>
+        <listener class-name="listeners.CalculatorListener"/>
+    </listeners>
+                    -->
+
+    <test name="PaymentSquad" enabled="true">
+        <classes>
+            <class name="runners.CalculatorRunner"/>
+            <parameter name="ChooseDeviceRandom" value="false"/>
+            <parameter name="OSType" value="Android"/>
+            <parameter name="deviceName" value="RF8NC10LACZ"/>
+            <parameter name="platformVersion" value="11"/>
+            <parameter name="udid" value="RF8NC10LACZ"/>
+            <parameter name="appPackage" value="com.vodafone.selfservis.beta"/>
+            <parameter name="appActivity" value="com.vodafone.selfservis.modules.splash.activities.SplashActivity"/>
+            <parameter name="platformName" value="Android"/>
+            <parameter name="HubURL" value="http://10.86.163.18:80/wd/hub"/>
+        </classes>
+    </test>
+</suite>
