@@ -33,7 +33,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>7.2.3</version>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
 
