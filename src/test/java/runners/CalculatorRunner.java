@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/java/cucumber",
         glue = {"stepdef"},
-        tags = {"@androidTest"},
+        //tags = {"@androidTest"},
         plugin = {
                 "html:target/cucumber-html-report",
                 "json:target/cucumber.json",
