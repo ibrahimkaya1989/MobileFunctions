@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/java/cucumber",
         glue = {"stepdef"},
-        tags = {"@androidTest"},
+        //tags = {"@androidTest"},
         plugin = {
                 "pretty",
                 "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",

@@ -59,6 +59,7 @@
             <version>${cucumber.version}</version>
         </dependency>
 
+        <!-- https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/ -->
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber-jvm -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
