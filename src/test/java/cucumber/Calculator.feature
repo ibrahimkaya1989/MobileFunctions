@@ -37,3 +37,21 @@ Feature: Calculator Running Test
     And I click element: Plus button index: 1
     And I click element: Number_5 button index: 1
     And I click element: Equal button index: 1
+
+  @androidTest
+  Scenario Outline: 5 - Testing for Calculate
+    When I see Numbers page
+    Then I wait Number_0 button element 5 seconds
+    And I click element: <number1> index: 1
+    And I click element: <operation> index: 1
+    And I click element: <number2> index: 1
+    And I click element: Equal button index: 1
+
+    Examples:
+      |number1  |number2 |operation |
+      |Number_1 button|Number_5 button|Multi button |
+      |Number_5 button|Number_4 button|Multi button |
+      |Number_7 button|Number_5 button|Multi button |
+      |Number_5 button|Number_9 button|Multi button |
+      |Number_5 button|Number_0 button|Multi button |
+      |Number_1 button|Number_1 button|Multi button |
