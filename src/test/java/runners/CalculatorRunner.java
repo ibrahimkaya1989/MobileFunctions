@@ -17,13 +17,15 @@ import org.testng.annotations.Test;
 @CucumberOptions(
         features = "src/test/java/cucumber",
         glue = {"stepdef"},
-        //tags = {"@androidTest"},
+        tags = {"@androidTest"},
         plugin = {
-                "html:target/cucumber-html-report",
-                "json:target/cucumber.json",
-                "pretty:target/cucumber-pretty.txt",
-                "usage:target/cucumber-usage.json",
-                "junit:target/cucumber-results.xml"
+                "pretty",
+                "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
+                "html:target/cucumber-report/cucumber-html-report",
+                "json:target/cucumber-report/cucumber.json",
+                "pretty:target/cucumber-report/cucumber-pretty.txt",
+                "usage:target/cucumber-report/cucumber-usage.json",
+                "junit:target/cucumber-report/cucumber-results.xml"
         }
 )
 
