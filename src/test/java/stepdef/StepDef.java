@@ -1,5 +1,6 @@
 package stepdef;
 
+import constants.TestStepResults;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
@@ -58,6 +59,7 @@ public class StepDef extends BasePage {
         if (object != null) {
             object.click();
             System.out.println("Clicked on object-->" + element);
+            mobileFunctions.allureReport(TestStepResults.PASS, "Clicked on object-->" + element, true );
         } else {
             System.out.println("Could not click on object-->" + element);
         }

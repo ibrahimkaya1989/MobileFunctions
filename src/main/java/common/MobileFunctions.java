@@ -2,16 +2,17 @@ package common;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.qameta.allure.Allure;
+import io.qameta.allure.model.Status;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.BasePage;
 import pages.LoginPage;
 import pages.NumbersPage;
 
+import java.io.ByteArrayInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -178,5 +179,26 @@ public class MobileFunctions implements MainSteps {
                     break;
             }
         }
+    }
+
+    public void allureReport(String result, String message, boolean ssFlag) {
+        try {
+            if (ssFlag) {
+                Allure.addAttachment("Screenshot : " + message, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+            }
+            if (result.equalsIgnoreCase("PASS")) {
+                Allure.step(message, Status.PASSED);
+            } else if (result.equalsIgnoreCase("INFO")) {
+                Allure.step(message, Status.SKIPPED);
+            } else if (result.equalsIgnoreCase("FAIL")) {
+                Allure.step(message, Status.FAILED);
+                org.testng.Assert.fail(message);
+            } else {
+                Allure.step(message);
+            }
+
+        } catch (Exception e) {
+        }
+
     }
 }
