@@ -27,19 +27,18 @@ public class MobileFunctions implements MainSteps {
             DesiredCapabilities cap = new DesiredCapabilities();
 
             // Smartphone Infos
-            cap.setCapability("deviceName", "Samsung Galaxy S7");
-            cap.setCapability("udid", "ce011821d905c4400d");
-            //cap.setCapability("udid", "192.168.1.3:5555");
+            cap.setCapability("deviceName", "IVPFSW7DNZVKUWJ7");
+            cap.setCapability("udid", "IVPFSW7DNZVKUWJ7");
             cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion", "8.0.0");
+            cap.setCapability("platformVersion", "12");
 
-
-            cap.setCapability("appPackage", "com.sec.android.app.popupcalculator");
-            cap.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
+            cap.setCapability("appPackage", "com.coloros.calculator");
+            cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+            cap.setCapability("automationName", "UiAutomator2");
 
             URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
-            driver = new AppiumDriver<MobileElement>(url, cap);
+            driver = new AppiumDriver<>(url, cap);
         }
     }
 
@@ -108,9 +107,9 @@ public class MobileFunctions implements MainSteps {
 
             findElement(element, index).click();
 
-            System.out.println("Clicked on object-->" + element + " # " + object.toString());
+            System.out.println("Clicked on object-->" + element + " # " + object);
         } else {
-            System.out.println("Could not click on object-->" + element + " # " + object.toString());
+            System.out.println("Could not click on object-->" + element + " # " + object);
         }
     }
 
@@ -197,7 +196,8 @@ public class MobileFunctions implements MainSteps {
                 Allure.step(message);
             }
 
-        } catch (Exception e) {
+        } catch (Exception ignore) {
+            // Do nothing...
         }
 
     }

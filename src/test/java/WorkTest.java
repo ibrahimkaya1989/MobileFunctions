@@ -7,14 +7,13 @@ public class WorkTest extends BasePage {
     {
         MobileFunctions mFunctions = new MobileFunctions();
 
-        try
-        {
+        try {
+
             mFunctions.initializeDriver("Android");
             mFunctions.seePage("Number");
             mFunctions.clickElement("Number_5 button", 1);
-        }
-        catch(Exception exp)
-        {
+        } catch(Exception exp) {
+
             System.out.println(exp.getCause());
             System.out.println(exp.getMessage());
             exp.printStackTrace();

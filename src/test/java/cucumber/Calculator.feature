@@ -6,6 +6,7 @@ Feature: Calculator Running Test
     When I see Login page
     Then I wait Clear button element 5 seconds
 
+  @Android
   Scenario: 1 - Testing for Calculate 5 x 5
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds
@@ -14,6 +15,7 @@ Feature: Calculator Running Test
     And I click element: Number_5 button index: 1
     And I click element: Equal button index: 1
 
+  @Android
   Scenario: 2 - Testing for Calculate 5 - 5
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds
@@ -22,6 +24,7 @@ Feature: Calculator Running Test
     And I click element: Number_5 button index: 1
     And I click element: Equal button index: 1
 
+  @Android
   Scenario: 3 - Testing for Calculate 5 / 5
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds
@@ -30,6 +33,7 @@ Feature: Calculator Running Test
     And I click element: Number_5 button index: 1
     And I click element: Equal button index: 1
 
+  @Android
   Scenario: 4 - Testing for Calculate 5 + 5
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds
@@ -38,7 +42,7 @@ Feature: Calculator Running Test
     And I click element: Number_5 button index: 1
     And I click element: Equal button index: 1
 
-  @androidTest
+  @Android @Test
   Scenario Outline: 5 - Testing for Calculate
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds

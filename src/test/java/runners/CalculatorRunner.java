@@ -16,17 +16,15 @@ import org.testng.annotations.Test;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/cucumber",
-        glue = {"stepdef"},
-        tags = {"@androidTest"},
-        plugin = {
-                "pretty",
+        glue = {"stepdefs"},
+        tags = {"@Android"},
+        plugin = { "pretty",
                 "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "html:target/cucumber-report/cucumber-html-report",
                 "json:target/cucumber-report/cucumber.json",
                 "pretty:target/cucumber-report/cucumber-pretty.txt",
                 "usage:target/cucumber-report/cucumber-usage.json",
-                "junit:target/cucumber-report/cucumber-results.xml"
-        }
+                "junit:target/cucumber-report/cucumber-results.xml" }
 )
 
 public class CalculatorRunner {

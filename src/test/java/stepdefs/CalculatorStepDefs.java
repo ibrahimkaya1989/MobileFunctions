@@ -1,4 +1,4 @@
-package stepdef;
+package stepdefs;
 
 import constants.TestStepResults;
 import cucumber.api.java.After;
@@ -14,7 +14,7 @@ import common.MobileFunctions;
 
 import java.net.MalformedURLException;
 
-public class StepDef extends BasePage {
+public class CalculatorStepDefs extends BasePage {
 
     MobileFunctions mobileFunctions;
 
