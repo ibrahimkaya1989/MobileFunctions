@@ -26,9 +26,7 @@ public class CalculatorListener implements ITestListener {
     }
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
-    }
+    public void onTestFailedButWithinSuccessPercentage(ITestResult result) {ITestListener.super.onTestFailedButWithinSuccessPercentage(result); }
 
     @Override
     public void onTestFailedWithTimeout(ITestResult result) {

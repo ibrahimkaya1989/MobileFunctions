@@ -1,6 +1,6 @@
 package runners;
 
-import cucumber.api.CucumberOptions;
+import io.cucumber.testng.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 import io.cucumber.testng.CucumberFeatureWrapper;
@@ -15,16 +15,16 @@ import org.testng.annotations.Test;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/cucumber",
+        features = {"src/test/java/cucumber"},
         glue = {"stepdefs"},
         tags = {"@Android"},
-        plugin = { "pretty",
-                "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
+        plugin = { "pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm",
                 "html:target/cucumber-report/cucumber-html-report",
                 "json:target/cucumber-report/cucumber.json",
                 "pretty:target/cucumber-report/cucumber-pretty.txt",
                 "usage:target/cucumber-report/cucumber-usage.json",
-                "junit:target/cucumber-report/cucumber-results.xml" }
+                "junit:target/cucumber-report/cucumber-results.xml" },
+        monochrome = true
 )
 
 public class CalculatorRunner {

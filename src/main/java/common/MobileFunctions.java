@@ -27,16 +27,17 @@ public class MobileFunctions implements MainSteps {
             DesiredCapabilities cap = new DesiredCapabilities();
 
             // Smartphone Infos
-            cap.setCapability("deviceName", "IVPFSW7DNZVKUWJ7");
-            cap.setCapability("udid", "IVPFSW7DNZVKUWJ7");
+            cap.setCapability("deviceName", "fa2bab6c");
+            cap.setCapability("udid", "fa2bab6c");
             cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion", "12");
+            cap.setCapability("platformVersion", "10");
 
             cap.setCapability("appPackage", "com.coloros.calculator");
             cap.setCapability("appActivity", "com.android.calculator2.Calculator");
             cap.setCapability("automationName", "UiAutomator2");
+            cap.setCapability("noReset", true);
 
-            URL url = new URL("http://127.0.0.1:4723/wd/hub");
+            URL url = new URL("http://192.168.4.207:4723/wd/hub");  // http://127.0.0.1:4723/wd/hub
 
             driver = new AppiumDriver<>(url, cap);
         }
@@ -104,9 +105,7 @@ public class MobileFunctions implements MainSteps {
         WebElement object = waitElement(element, 30);
 
         if (object != null) {
-
             findElement(element, index).click();
-
             System.out.println("Clicked on object-->" + element + " # " + object);
         } else {
             System.out.println("Could not click on object-->" + element + " # " + object);
