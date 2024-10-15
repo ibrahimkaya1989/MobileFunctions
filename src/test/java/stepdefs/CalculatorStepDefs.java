@@ -1,9 +1,9 @@
 package stepdefs;
 
 import constants.TestStepResults;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.When;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.When;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,12 +20,12 @@ public class CalculatorStepDefs extends BasePage {
 
     @Before
     public void beforeScenario() {
-        System.out.println("*************Before Scenario***********");
+        System.out.println("-------------------- Before Scenario --------------------");
     }
 
     @After
     public void afterScenario() {
-        System.out.println("*************After Scenario***********");
+        System.out.println("-------------------- After Scenario --------------------");
 
         waitForNSeconds(5);
         mobileFunctions.driver.quit();
@@ -40,11 +40,13 @@ public class CalculatorStepDefs extends BasePage {
     @When("^I see (.*) page$")
     public void seePage(String page) {
         mobileFunctions.seePage(page);
+        System.out.println("Page shown up " + page);
     }
 
     @When("^I wait (.*) element (\\d+) seconds$")
     public void waitElement(String element, int timeout) throws InterruptedException {
         mobileFunctions.waitElement(element, timeout);
+        System.out.println("Clicked clear button");
     }
 
     @When("^(?:I )?wait element: (.*) of index: (\\d+) for (\\d+) seconds$")
@@ -59,7 +61,7 @@ public class CalculatorStepDefs extends BasePage {
         if (object != null) {
             object.click();
             System.out.println("Clicked on object-->" + element);
-            mobileFunctions.allureReport(TestStepResults.PASS, "Clicked on object-->" + element, true );
+            //mobileFunctions.allureReport(TestStepResults.PASS, "Clicked on object-->" + element, true );
         } else {
             System.out.println("Could not click on object-->" + element);
         }

@@ -3,11 +3,10 @@ package common;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.qameta.allure.Allure;
-import io.qameta.allure.model.Status;
-import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import pages.BasePage;
 import pages.LoginPage;
 import pages.NumbersPage;
@@ -27,17 +26,17 @@ public class MobileFunctions implements MainSteps {
             DesiredCapabilities cap = new DesiredCapabilities();
 
             // Smartphone Infos
-            cap.setCapability("deviceName", "fa2bab6c");
-            cap.setCapability("udid", "fa2bab6c");
+            cap.setCapability("deviceName", "R6CT400PWGR");
+            cap.setCapability("udid", "R6CT400PWGR");
             cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion", "10");
+            cap.setCapability("platformVersion", "14");
 
-            cap.setCapability("appPackage", "com.coloros.calculator");
-            cap.setCapability("appActivity", "com.android.calculator2.Calculator");
+            cap.setCapability("appPackage", "com.sec.android.app.popupcalculator");
+            cap.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
             cap.setCapability("automationName", "UiAutomator2");
             cap.setCapability("noReset", true);
 
-            URL url = new URL("http://192.168.4.207:4723/wd/hub");  // http://127.0.0.1:4723/wd/hub
+            URL url = new URL("http://127.0.0.1:4723/wd/hub");  // http://127.0.0.1:4723/wd/hub
 
             driver = new AppiumDriver<>(url, cap);
         }
@@ -80,7 +79,7 @@ public class MobileFunctions implements MainSteps {
             System.out.println("Object found : " + element + " # " + object.toString());
             return object;
         } catch (Exception e) {
-            //Assert.fail("Element is not found! # " + e.toString());
+            Assert.fail("Element is not found! # " + e);
             return null;
         }
     }
@@ -106,9 +105,9 @@ public class MobileFunctions implements MainSteps {
 
         if (object != null) {
             findElement(element, index).click();
-            System.out.println("Clicked on object-->" + element + " # " + object);
+            System.out.println("Clicked on object--> " + element + " # " + object);
         } else {
-            System.out.println("Could not click on object-->" + element + " # " + object);
+            System.out.println("Could not click on object--> " + element + " # " + object);
         }
     }
 
@@ -185,12 +184,12 @@ public class MobileFunctions implements MainSteps {
                 Allure.addAttachment("Screenshot : " + message, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
             }
             if (result.equalsIgnoreCase("PASS")) {
-                Allure.step(message, Status.PASSED);
+                Allure.step(message);
             } else if (result.equalsIgnoreCase("INFO")) {
-                Allure.step(message, Status.SKIPPED);
+                Allure.step(message);
             } else if (result.equalsIgnoreCase("FAIL")) {
-                Allure.step(message, Status.FAILED);
-                org.testng.Assert.fail(message);
+                Allure.step(message);
+                Assert.fail(message);
             } else {
                 Allure.step(message);
             }

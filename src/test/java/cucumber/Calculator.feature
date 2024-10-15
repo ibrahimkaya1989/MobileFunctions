@@ -52,10 +52,10 @@ Feature: Calculator Running Test
     And I click element: Equal button index: 1
 
     Examples:
-      |number1  |number2 |operation |
-      |Number_1 button|Number_5 button|Multi button |
-      |Number_5 button|Number_4 button|Multi button |
-      |Number_7 button|Number_5 button|Multi button |
-      |Number_5 button|Number_9 button|Multi button |
-      |Number_5 button|Number_0 button|Multi button |
-      |Number_1 button|Number_1 button|Multi button |
+      | number1          | number2          | operation    |
+      | Number_1 button  | Number_5 button  | Multi button |
+      | Number_5 button  | Number_4 button  | Multi button |
+      | Number_7 button  | Number_5 button  | Multi button |
+      | Number_5 button  | Number_9 button  | Multi button |
+      | Number_5 button  | Number_0 button  | Multi button |
+      | Number_1 button  | Number_1 button  | Multi button |

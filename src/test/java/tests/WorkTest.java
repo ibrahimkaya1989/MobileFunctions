@@ -1,3 +1,5 @@
+package tests;
+
 import common.MobileFunctions;
 import pages.BasePage;
 

@@ -13,16 +13,10 @@ public abstract class BasePage {
         this.pageElements = new Hashtable<>();
         this.commonElements = new Hashtable<>();
 
-        commonElements.put("Equal button", By.id("com.coloros.calculator:id/eq"));
-        commonElements.put("Plus button", By.id("com.coloros.calculator:id/op_add"));
-        commonElements.put("Sub button", By.id("com.coloros.calculator:id/op_sub"));
-        commonElements.put("Multi button", By.id("com.coloros.calculator:id/op_mul"));
-        commonElements.put("Div button", By.id("com.coloros.calculator:id/op_div"));
-
-        commonElements.put("Equal1 button", By.id("com.sec.android.app.popupcalculator:id/bt_equal"));
-        commonElements.put("Plus1 button", By.id("com.sec.android.app.popupcalculator:id/bt_add"));
-        commonElements.put("Sub1 button", By.id("com.sec.android.app.popupcalculator:id/bt_sub"));
-        commonElements.put("Multi1 button", By.id("com.sec.android.app.popupcalculator:id/bt_mul"));
-        commonElements.put("Div1 button", By.id("com.sec.android.app.popupcalculator:id/bt_div"));
+        commonElements.put("Equal button", By.xpath("//*[contains(@resource-id, 'btn_eq')]"));
+        commonElements.put("Plus button", By.xpath("//*[contains(@resource-id, 'btn_add')]"));
+        commonElements.put("Sub button", By.xpath("//*[contains(@resource-id, 'btn_sub')]"));
+        commonElements.put("Multi button", By.xpath("//*[contains(@resource-id, 'btn_mul')]"));
+        commonElements.put("Div button", By.xpath("//*[contains(@resource-id, 'btn_div')]"));
     }
 }

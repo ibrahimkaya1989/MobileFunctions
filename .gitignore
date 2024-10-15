@@ -1,9 +1,10 @@
 # Project exclude paths
-/target/
-/allure-results/
 /.idea/
 /.settings/
 /.metadata/
+/target/
+/allure-results/
+/allure-report/
 /test-output/
 /output/
 
