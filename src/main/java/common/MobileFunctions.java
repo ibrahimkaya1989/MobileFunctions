@@ -2,6 +2,7 @@ package common;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -15,30 +16,28 @@ import java.io.ByteArrayInputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MobileFunctions implements MainSteps {
+public class MobileFunctions {
 
-    public AppiumDriver<MobileElement> driver;
+    public AppiumDriver<MobileElement> appiumDriver;
     public BasePage page;
 
     public void initializeDriver(String device) throws MalformedURLException {
 
-        if(device.equalsIgnoreCase("Android")) {
-            DesiredCapabilities cap = new DesiredCapabilities();
+        if (device.equalsIgnoreCase("Android")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
 
             // Smartphone Infos
-            cap.setCapability("deviceName", "R6CT400PWGR");
-            cap.setCapability("udid", "R6CT400PWGR");
-            cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion", "14");
+            capabilities.setCapability("deviceName", "R6CT400PWGR");
+            capabilities.setCapability("udid", "R6CT400PWGR");
+            capabilities.setCapability("platformName", "Android");
+            capabilities.setCapability("platformVersion", "14");
 
-            cap.setCapability("appPackage", "com.sec.android.app.popupcalculator");
-            cap.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
-            cap.setCapability("automationName", "UiAutomator2");
-            cap.setCapability("noReset", true);
+            capabilities.setCapability("appPackage", "com.sec.android.app.popupcalculator");
+            capabilities.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
+            capabilities.setCapability("automationName", "UiAutomator2");
+            capabilities.setCapability("noReset", true);
 
-            URL url = new URL("http://127.0.0.1:4723/wd/hub");  // http://127.0.0.1:4723/wd/hub
-
-            driver = new AppiumDriver<>(url, cap);
+            appiumDriver = new AndroidDriver<>(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
         }
     }
 
@@ -75,8 +74,8 @@ public class MobileFunctions implements MainSteps {
             if (elem == null) {
                 elem = page.commonElements.get(element);
             }
-            object = driver.findElements(elem).get(index);
-            System.out.println("Object found : " + element + " # " + object.toString());
+            object = appiumDriver.findElements(elem).get(index);
+            System.out.println("Object found : " + element); // + " # " + object.toString()
             return object;
         } catch (Exception e) {
             Assert.fail("Element is not found! # " + e);
@@ -105,9 +104,9 @@ public class MobileFunctions implements MainSteps {
 
         if (object != null) {
             findElement(element, index).click();
-            System.out.println("Clicked on object--> " + element + " # " + object);
+            System.out.println("Clicked on object--> " + element); // + " # " + object
         } else {
-            System.out.println("Could not click on object--> " + element + " # " + object);
+            System.out.println("Could not click on object--> " + element);
         }
     }
 
@@ -122,7 +121,7 @@ public class MobileFunctions implements MainSteps {
     }
 
     public void clickKeyboard(String key) {
-        Actions action = new Actions(driver);
+        Actions action = new Actions(appiumDriver);
         switch (key) {
             case "ENTER":
                 action.sendKeys(Keys.ENTER).build().perform();
@@ -181,7 +180,7 @@ public class MobileFunctions implements MainSteps {
     public void allureReport(String result, String message, boolean ssFlag) {
         try {
             if (ssFlag) {
-                Allure.addAttachment("Screenshot : " + message, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+                Allure.addAttachment("Screenshot : " + message, new ByteArrayInputStream(((TakesScreenshot) appiumDriver).getScreenshotAs(OutputType.BYTES)));
             }
             if (result.equalsIgnoreCase("PASS")) {
                 Allure.step(message);

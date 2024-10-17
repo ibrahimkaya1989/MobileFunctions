@@ -43,7 +43,7 @@ Feature: Calculator Running Test
     And I click element: Equal button index: 1
 
   @Android @Test
-  Scenario Outline: 5 - Testing for Calculate
+  Scenario Outline: 5 - Testing for Calculate <number1> <operation> <number2>
     When I see Numbers page
     Then I wait Number_0 button element 5 seconds
     And I click element: <number1> index: 1
@@ -54,8 +54,8 @@ Feature: Calculator Running Test
     Examples:
       | number1          | number2          | operation    |
       | Number_1 button  | Number_5 button  | Multi button |
-      | Number_5 button  | Number_4 button  | Multi button |
-      | Number_7 button  | Number_5 button  | Multi button |
-      | Number_5 button  | Number_9 button  | Multi button |
+      | Number_5 button  | Number_4 button  | Plus button  |
+      | Number_7 button  | Number_5 button  | Sub button   |
+      | Number_5 button  | Number_9 button  | Div button   |
       | Number_5 button  | Number_0 button  | Multi button |
-      | Number_1 button  | Number_1 button  | Multi button |
+      | Number_1 button  | Number_1 button  | Sub button   |

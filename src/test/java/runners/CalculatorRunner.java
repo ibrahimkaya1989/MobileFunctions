@@ -26,9 +26,7 @@ import org.testng.annotations.*;
                 "pretty:target/cucumber-report/cucumber-pretty.txt",
                 "usage:target/cucumber-report/cucumber-usage.json",
                 "junit:target/cucumber-report/cucumber-results.xml" },
-        monochrome = true,
-        dryRun = true,
-        publish = true
+        monochrome = true
 )
 
 public class CalculatorRunner {

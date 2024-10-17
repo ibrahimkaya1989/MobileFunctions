@@ -1,9 +1,8 @@
 package stepdefs;
 
 import constants.TestStepResults;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.en.When;
+import io.cucumber.java.*;
+import io.cucumber.java.en.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -20,15 +19,15 @@ public class CalculatorStepDefs extends BasePage {
 
     @Before
     public void beforeScenario() {
-        System.out.println("-------------------- Before Scenario --------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------");
     }
 
     @After
     public void afterScenario() {
-        System.out.println("-------------------- After Scenario --------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------");
 
-        waitForNSeconds(5);
-        mobileFunctions.driver.quit();
+        //waitForNSeconds(5);
+        //mobileFunctions.appiumDriver.quit();
     }
 
     @When("^I initialize (Android|iOS) device$")
@@ -37,37 +36,24 @@ public class CalculatorStepDefs extends BasePage {
         mobileFunctions.initializeDriver(device);
     }
 
-    @When("^I see (.*) page$")
+    @Then("^I see (.*) page$")
     public void seePage(String page) {
         mobileFunctions.seePage(page);
         System.out.println("Page shown up " + page);
     }
 
-    @When("^I wait (.*) element (\\d+) seconds$")
+    @Then("^I wait (.*) element (\\d+) seconds$")
     public void waitElement(String element, int timeout) throws InterruptedException {
         mobileFunctions.waitElement(element, timeout);
         System.out.println("Clicked clear button");
     }
 
-    @When("^(?:I )?wait element: (.*) of index: (\\d+) for (\\d+) seconds$")
+    @And("^(?:I )?wait element: (.*) of index: (\\d+) for (\\d+) seconds$")
     public void waitElement(String element, int index, int timeout) throws InterruptedException {
         mobileFunctions.waitElementIndex(element, index-1, timeout);
     }
 
-    @When("^(?:I )?click element: (.*) index: (\\d+)$")
-    public void clickElement(String element, int index) {
-        WebElement object = mobileFunctions.findElement(element,index - 1 );
-
-        if (object != null) {
-            object.click();
-            System.out.println("Clicked on object-->" + element);
-            //mobileFunctions.allureReport(TestStepResults.PASS, "Clicked on object-->" + element, true );
-        } else {
-            System.out.println("Could not click on object-->" + element);
-        }
-    }
-
-    @When("^(?:I )?wait for (\\d+) seconds?$")
+    @And("^(?:I )?wait for (\\d+) seconds?$")
     public void waitForNSeconds(int seconds) {
         try {
             Thread.sleep((long) seconds * 1000L);
@@ -76,14 +62,27 @@ public class CalculatorStepDefs extends BasePage {
         }
     }
 
-    @When("^I click \"([^\"]*)\" keyboard button$")
-    public void clickKeyboard(String key) {
-        mobileFunctions.clickKeyboard(key);
+    @Then("^(?:I )?click element: (.*) index: (\\d+)$")
+    public void clickElement(String element, int index) {
+        WebElement object = mobileFunctions.findElement(element,index - 1 );
+
+        if (object != null) {
+            object.click();
+            System.out.println("Clicked on object-->" + element);
+            mobileFunctions.allureReport(TestStepResults.PASS, "Clicked on object-->" + element, true );
+        } else {
+            System.out.println("Could not click on object-->" + element);
+        }
     }
 
-    @When("^I do click \"([^\"]*)\" keyboard button at \"([^\"]*)\" element$")
+    @And("^I do click \"([^\"]*)\" keyboard button at \"([^\"]*)\" element$")
     public void clickKeyboardWithElement(String key, String element) {
         mobileFunctions.clickKeyboardWithElement(key, element);
+    }
+
+    @And("^I click \"([^\"]*)\" keyboard button$")
+    public void clickKeyboard(String key) {
+        mobileFunctions.clickKeyboard(key);
     }
 
     @When("^I send text \"([^\"]*)\" to \"([^\"]*)\" element$")
@@ -94,7 +93,7 @@ public class CalculatorStepDefs extends BasePage {
     @When("^(?:I )?clean (.*) then I enter \"([^\"]*)\" text$")
     public void cleanField(String element, String text) throws InterruptedException {
         By elem = mobileFunctions.page.pageElements.get(element);
-        mobileFunctions.driver.findElement(elem).clear();
+        mobileFunctions.appiumDriver.findElement(elem).clear();
         waitForNSeconds(2);
         enterText(text, element);
     }
@@ -113,7 +112,7 @@ public class CalculatorStepDefs extends BasePage {
 
     @When("^(?:I )?focus (.*) element$")
     public void mouseHover(String element) throws InterruptedException {
-        Actions actions = new Actions(mobileFunctions.driver);
+        Actions actions = new Actions(mobileFunctions.appiumDriver);
         WebElement elem = mobileFunctions.waitElement(element, 5);
         actions.moveToElement(elem).perform();
         Thread.sleep(2000);

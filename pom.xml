@@ -17,8 +17,8 @@
         <selenium.version>3.141.59</selenium.version>
         <cucumber.version>7.20.1</cucumber.version>
         <cucumberjvm.version>1.0.6</cucumberjvm.version>
-        <allure.version>2.29.0</allure.version>
         <testng.version>7.10.2</testng.version>
+        <allure.version>2.29.0</allure.version>
     </properties>
 
     <dependencies>
