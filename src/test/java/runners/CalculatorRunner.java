@@ -16,7 +16,7 @@ import org.testng.annotations.*;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/java/cucumber"},
+        features = {"src/test/resources/features"},
         glue = {"stepdefs"},
         tags = "@Android",
         plugin = { "pretty",
